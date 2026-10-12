@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Interacción entre Funciones en Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #0f3460 0%, #e94560 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .concept-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e94560;
+            backdrop-filter: blur(10px);
+        }
+
+        .concept-card h2 {
+            color: #e94560;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-card h2::before {
+            content: "▶";
+            font-size: 0.8em;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: rgba(15, 52, 96, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .info-box h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #0d0d1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 1px solid #e94560;
+        }
+
+        .code-block code {
+            color: #a8e6cf;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .example-section {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .example-section h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .flow-box {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .flow-arrow {
+            font-size: 2em;
+            color: #00d4ff;
+        }
+
+        .key-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .key-point {
+            background: rgba(0, 212, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .key-point::before {
+            content: "★ ";
+            color: #e94560;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 Interacción entre Funciones en Python</h1>
+            <p>Guía para programadores intermedios</p>
+        </header>
+
+        <div class="concept-card">
+            <h2>¿Qué es la interacción entre funciones?</h2>
+            <p>Cuando una función llama a otra función, o cuando el resultado de una función se pasa como argumento a otra función, estamos creando una <strong>interacción entre funciones</strong>. Este patrón es fundamental para escribir código modular, reutilizable y fácil de mantener.</p>
+            
+            <div class="concept-grid">
+                <div class="info-box">
+                    <h3>🔹 Funciones como argumentos</h3>
+                    <p>Una función puede recibir otra función como parámetro y ejecutarla internamente.</p>
+                </div>
+                <div class="info-box">
+                    <h3>🔹 Funciones que retornan funciones</h3>
+                    <p>Una función puede crear y retornar una nueva función.</p>
+                </div>
+                <div class="info-box">
+                    <h3>🔹 Encadenamiento de funciones</h3>
+                    <p>El resultado de una función se pasa directamente como argumento a otra función.</p>
+                </div>
+                <div class="info-box">
+                    <h3>🔹 Funciones anidadas</h3>
+                    <p>Una función puede definir otras funciones dentro de ella misma.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>📌 Ejemplo 1: Encadenamiento de Funciones</h2>
+            <p>El resultado de una función se pasa directamente como argumento a otra función.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-box">calcular_area()</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">aplicar_descuento()</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">precio_final</div>
+            </div>
+
+            <div class="code-block">
+                <code>
+def calcular_area(largo, ancho):
+    """Calcula el área de un rectángulo"""
+    return largo * ancho
+
+def aplicar_descuento(precio, porcentaje=0.1):
+    """Aplica un descuento al precio"""
+    return precio * (1 - porcentaje)
+
+def formatear_precio(precio):
+    """Formatea el precio como moneda"""
+    return f"${precio:.2f}"
+
+# Encadenamiento: el resultado fluye de una función a otra
+area = calcular_area(10, 5)
+precio_con_descuento = aplicar_descuento(area * 100, 0.15)
+resultado = formatear_precio(precio_con_descuento)
+
+print(resultado)  # $425.00
+
+# También se puede hacer en una sola línea:
+resultado_directo = formatear_precio(aplicar_descuento(calcular_area(10, 5) * 100, 0.15))
+print(resultado_directo)  # $425.00
+                </code>
+            </div>
+
+            <div class="key-points">
+                <span class="key-point">Cada función tiene una responsabilidad única</span>
+                <span class="key-point">El flujo de datos es de izquierda a derecha</span>
+                <span class="key-point">Fácil de leer y depurar</span>
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>📌 Ejemplo 2: Funciones como Argumentos (Callbacks)</h2>
+            <p>Una función recibe otra función como parámetro y la ejecuta internamente.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-box">procesar_lista()</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">función callback</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">resultado transformado</div>
+            </div>
+
+            <div class="code-block">
+                <code>
+def procesar_lista(lista, operacion):
+    """Aplica una operación a cada elemento de la lista"""
+    return [operacion(elemento) for elemento in lista]
+
+def duplicar(x):
+    return x * 2
+
+def cuadrado(x):
+    return x ** 2
+
+def es_par(x):
+    return x % 2 == 0
+
+# Usando diferentes funciones como argumentos
+numeros = [1, 2, 3, 4, 5]
+
+# Aplicar diferentes operaciones
+duplicados = procesar_lista(numeros, duplicar)
+print(duplicados)  # [2, 4, 6, 8, 10]
+
+cuadrados = procesar_lista(numeros, cuadrado)
+print(cuadrados)  # [1, 4, 9, 16, 25]
+
+# Con funciones lambda (funciones anónimas)
+dobles = procesar_lista(numeros, lambda x: x * 2)
+print(dobles)  # [2, 4, 6, 8, 10]
+
+# Filtrar usando una función que retorna booleano
+pares = list(filter(es_par, numeros))
+print(pares)  # [2, 4]
+                </code>
+            </div>
+
+            <div class="key-points">
+                <span class="key-point">Permite reutilizar lógica de procesamiento</span>
+                <span class="key-point">Patrón común en map(), filter(), sorted()</span>
+                <span class="key-point">Hace el código más flexible y genérico</span>
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>📌 Ejemplo 3: Funciones que Retornan Funciones</h2>
+            <p>Una función crea y retorna una nueva función personalizada (closures).</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-box">crear_multiplicador()</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">nueva función</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">resultado personalizado</div>
+            </div>
+
+            <div class="code-block">
+                <code>
+def crear_multiplicador(factor):
+    """Crea una función que multiplica por un factor específico"""
+    def multiplicar(numero):
+        return numero * factor
+    return multiplicar
+
+def crear_validador(tipo):
+    """Crea un validador según el tipo especificado"""
+    def validar(valor):
+        if tipo == "email":
+            return "@" in str(valor) and "." in str(valor)
+        elif tipo == "numero":
+            return isinstance(valor, (int, float))
+        elif tipo == "texto":
+            return isinstance(valor, str) and len(valor) > 0
+        return False
+    return validar
+
+# Crear funciones especializadas
+duplicar = crear_multiplicador(2)
+triplicar = crear_multiplicador(3)
+mitad = crear_multiplicador(0.5)
+
+print(duplicar(5))    # 10
+print(triplicar(5))   # 15
+print(mitad(10))      # 5.0
+
+# Crear validadores específicos
+validar_email = crear_validador("email")
+validar_numero = crear_validador("numero")
+
+print(validar_email("test@example.com"))  # True
+print(validar_email("invalido"))          # False
+print(validar_numero(42))               # True
+print(validar_numero("42"))             # False
+
+# Ejemplo avanzado: combinar con map
+numeros = [1, 2, 3, 4, 5]
+resultados = list(map(crear_multiplicador(10), numeros))
+print(resultados)  # [10, 20, 30, 40, 50]
+                </code>
+            </div>
+
+            <div class="key-points">
+                <span class="key-point">Las funciones internas recuerdan el entorno donde fueron creadas</span>
+                <span class="key-point">Patrón de diseño Factory (fábrica)</span>
+                <span class="key-point">Muy útil para configuraciones personalizadas</span>
+            </div>
+        </div>
+
+        <div class="concept-card">
+            <h2>🎯 Buenas Prácticas</h2>
+            <div class="concept-grid">
+                <div class="info-box">
+                    <h3>✓ Principio de Responsabilidad Única</h3>
+                    <p>Cada función debe hacer una sola cosa y hacerla bien.</p>
+                </div>
+                <div class="info-box">
+                    <h3>✓ Nombres descriptivos</h3>
+                    <p>Usa nombres que indiquen claramente qué hace la función.</p>
+                </div>
+                <div class="info-box">
+                    <h3>✓ Documenta el flujo</h3>
+                    <p>Usa docstrings para explicar cómo interactúan las funciones.</p>
+                </div>
+                <div class="info-box">
+                    <h3>✓ Evita acoplamiento excesivo</h3>
+                    <p>Las funciones deben ser independientes y reutilizables.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Infografía creada para estudiantes intermedios de Python • 🐍</p>
+        </footer>
+    </div>
+</body>
+</html>
